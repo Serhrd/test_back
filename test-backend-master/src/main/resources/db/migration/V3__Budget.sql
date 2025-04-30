@@ -1,0 +1,1 @@
+ALTER TABLE budget add if not exists author_id integer

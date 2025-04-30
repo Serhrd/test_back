@@ -1,0 +1,1002 @@
+2025-04-30 14:44:04,554 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 14:44:05,113 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 14:44:05,324 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 14:44:05,361 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 14:44:05,393 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 14:44:05,397 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 14:44:05,484 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.052s)
+2025-04-30 14:44:05,502 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 2
+2025-04-30 14:44:05,502 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 14:44:05,504 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2025-04-30 14:44:05,727 [main] INFO  org.reflections.Reflections - Reflections took 157 ms to scan 1 urls, producing 96 keys and 1173 values 
+2025-04-30 14:44:07,338 [main] INFO  Application - Responding at http://0.0.0.0:8080
+2025-04-30 14:44:07,339 [main] INFO  Application - Application started in 2.813 seconds.
+2025-04-30 14:44:07,340 [main] INFO  Application - Application started: io.ktor.application.Application@15d0d6c9
+2025-04-30 14:51:03,835 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #0 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:18)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:12)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:11)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:51:03,844 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #1 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:18)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:12)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:11)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:51:03,852 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #2 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:18)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:12)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:11)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:51:03,880 [eventLoopGroupProxy-4-1] ERROR InternalError - 
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:18)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:12)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:9)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:11)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:51:03,882 [eventLoopGroupProxy-4-1] INFO  Application - 500 Internal Server Error: POST - /budget/add
+2025-04-30 14:52:30,343 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 14:52:30,857 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 14:52:31,025 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 14:52:31,056 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 14:52:31,083 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 14:52:31,087 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 14:52:31,154 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.033s)
+2025-04-30 14:52:31,171 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 2
+2025-04-30 14:52:31,171 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 14:52:31,172 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2025-04-30 14:52:31,397 [main] INFO  org.reflections.Reflections - Reflections took 176 ms to scan 1 urls, producing 96 keys and 1173 values 
+2025-04-30 14:52:32,890 [main] INFO  Application - Responding at http://0.0.0.0:8080
+2025-04-30 14:52:32,890 [main] INFO  Application - Application started in 2.569 seconds.
+2025-04-30 14:52:32,891 [main] INFO  Application - Application started: io.ktor.application.Application@ac91282
+2025-04-30 14:53:34,938 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #0 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:53:34,946 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #1 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:53:34,952 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #2 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:53:34,968 [eventLoopGroupProxy-4-1] ERROR InternalError - 
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:53:34,971 [eventLoopGroupProxy-4-1] INFO  Application - 500 Internal Server Error: POST - /budget/add
+2025-04-30 14:58:06,057 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 14:58:06,567 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 14:58:06,736 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 14:58:06,764 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 14:58:06,791 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 14:58:06,795 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 14:58:06,860 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.033s)
+2025-04-30 14:58:06,880 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 2
+2025-04-30 14:58:06,880 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 14:58:06,881 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version 3 - Budget
+2025-04-30 14:58:06,895 [main] ERROR o.f.core.internal.command.DbMigrate - Migration of schema "public" to version 3 - Budget failed! Changes successfully rolled back.
+2025-04-30 14:58:46,120 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 14:58:46,630 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 14:58:46,799 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 14:58:46,828 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 14:58:46,854 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 14:58:46,858 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 14:58:46,921 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.031s)
+2025-04-30 14:58:46,939 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 2
+2025-04-30 14:58:46,939 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 14:58:46,941 [main] INFO  o.f.core.internal.command.DbMigrate - Migrating schema "public" to version 3 - Budget
+2025-04-30 14:58:46,951 [main] WARN  o.f.c.i.s.DefaultSqlScriptExecutor - DB: column "author_id" of relation "budget" already exists, skipping (SQL State: 42701 - Error Code: 0)
+2025-04-30 14:58:46,969 [main] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 1 migration to schema "public" (execution time 00:00.039s)
+2025-04-30 14:58:47,173 [main] INFO  org.reflections.Reflections - Reflections took 157 ms to scan 1 urls, producing 96 keys and 1173 values 
+2025-04-30 14:58:48,706 [main] INFO  Application - Responding at http://0.0.0.0:8080
+2025-04-30 14:58:48,707 [main] INFO  Application - Application started in 2.609 seconds.
+2025-04-30 14:58:48,707 [main] INFO  Application - Application started: io.ktor.application.Application@64bebd55
+2025-04-30 14:59:34,989 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #0 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:59:34,998 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #1 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:59:35,007 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #2 failed: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61. Statement(s): SELECT author.id, author."fullName", author.created_at FROM author WHERE author.id = ?
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:59:35,028 [eventLoopGroupProxy-4-1] ERROR InternalError - 
+org.jetbrains.exposed.exceptions.ExposedSQLException: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.AbstractQuery.iterator(AbstractQuery.kt:67)
+	at org.jetbrains.exposed.sql.IterableExKt$mapLazy$1.iterator(IterableEx.kt:126)
+	at kotlin.collections.CollectionsKt___CollectionsKt.firstOrNull(_Collections.kt:267)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:520)
+	at org.jetbrains.exposed.dao.EntityClass.findById(Entity.kt:511)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:19)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1$entity$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:707)
+	at org.jetbrains.exposed.dao.EntityClass.new(Entity.kt:684)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:13)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation "author" does not exist
+  Позиция: 61
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:313)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:159)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:109)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:165)
+	at org.jetbrains.exposed.sql.Query.executeInternal(Query.kt:94)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 29 common frames omitted
+2025-04-30 14:59:35,031 [eventLoopGroupProxy-4-1] INFO  Application - 500 Internal Server Error: POST - /budget/add
+2025-04-30 16:29:48,108 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 16:29:48,796 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 16:29:49,902 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:285)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:211)
+	at org.postgresql.Driver.makeConnection(Driver.java:459)
+	at org.postgresql.Driver.connect(Driver.java:261)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:117)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:123)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:365)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:194)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:460)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:534)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at mobi.sevenwinds.modules.DatabaseFactory.hikari(DatabaseFactory.kt:43)
+	at mobi.sevenwinds.modules.DatabaseFactory.init(DatabaseFactory.kt:21)
+	at mobi.sevenwinds.ApplicationKt.module(Application.kt:31)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.call(KCallableImpl.kt:108)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:159)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:115)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:317)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:316)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:341)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:316)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:30)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:297)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:295)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:323)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:295)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:136)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:268)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:174)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:26)
+	at mobi.sevenwinds.ApplicationKt.main(Application.kt:27)
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:752)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:81)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:93)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:197)
+	... 38 common frames omitted
+2025-04-30 16:30:09,003 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 16:30:09,663 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 16:30:09,946 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 16:30:10,001 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 16:30:10,042 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 16:30:10,064 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 16:30:10,291 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.066s)
+2025-04-30 16:30:10,323 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 3
+2025-04-30 16:30:10,323 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 16:30:10,327 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2025-04-30 16:30:10,744 [main] INFO  org.reflections.Reflections - Reflections took 346 ms to scan 1 urls, producing 96 keys and 1173 values 
+2025-04-30 16:30:13,589 [main] INFO  Application - Responding at http://0.0.0.0:8080
+2025-04-30 16:30:13,590 [main] INFO  Application - Application started in 4.615 seconds.
+2025-04-30 16:30:13,591 [main] INFO  Application - Application started: io.ktor.application.Application@ac91282
+2025-04-30 16:31:10,182 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #0 failed: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.. Statement(s): INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (?, ?, ?, ?, ?)
+org.jetbrains.exposed.exceptions.ExposedSQLException: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.statements.Statement.execute(Statement.kt:29)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert(Queries.kt:91)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert$default(Queries.kt:61)
+	at org.jetbrains.exposed.dao.EntityCache.flushInserts$exposed(Entity.kt:454)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:407)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:401)
+	at org.jetbrains.exposed.sql.Transaction.flushCache(Transaction.kt:85)
+	at org.jetbrains.exposed.sql.Transaction.commit(Transaction.kt:62)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:157)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:154)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2269)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:511)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:851)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:874)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1569)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeBatch(ProxyStatement.java:128)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeBatch(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.execInsertFunction(InsertStatement.kt:110)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:119)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:14)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 26 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	... 36 common frames omitted
+2025-04-30 16:31:10,190 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #1 failed: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.. Statement(s): INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (?, ?, ?, ?, ?)
+org.jetbrains.exposed.exceptions.ExposedSQLException: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.statements.Statement.execute(Statement.kt:29)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert(Queries.kt:91)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert$default(Queries.kt:61)
+	at org.jetbrains.exposed.dao.EntityCache.flushInserts$exposed(Entity.kt:454)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:407)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:401)
+	at org.jetbrains.exposed.sql.Transaction.flushCache(Transaction.kt:85)
+	at org.jetbrains.exposed.sql.Transaction.commit(Transaction.kt:62)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:157)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:154)
+	at org.postgresql.core.ResultHandlerDelegate.handleError(ResultHandlerDelegate.java:50)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2269)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:511)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:851)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:874)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1569)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeBatch(ProxyStatement.java:128)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeBatch(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.execInsertFunction(InsertStatement.kt:110)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:119)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:14)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 26 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	... 36 common frames omitted
+2025-04-30 16:31:10,198 [DefaultDispatcher-worker-1] WARN  Exposed - Transaction attempt #2 failed: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.. Statement(s): INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (?, ?, ?, ?, ?)
+org.jetbrains.exposed.exceptions.ExposedSQLException: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.statements.Statement.execute(Statement.kt:29)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert(Queries.kt:91)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert$default(Queries.kt:61)
+	at org.jetbrains.exposed.dao.EntityCache.flushInserts$exposed(Entity.kt:454)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:407)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:401)
+	at org.jetbrains.exposed.sql.Transaction.flushCache(Transaction.kt:85)
+	at org.jetbrains.exposed.sql.Transaction.commit(Transaction.kt:62)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:157)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:154)
+	at org.postgresql.core.ResultHandlerDelegate.handleError(ResultHandlerDelegate.java:50)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2269)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:511)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:851)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:874)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1569)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeBatch(ProxyStatement.java:128)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeBatch(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.execInsertFunction(InsertStatement.kt:110)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:119)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:14)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 26 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	... 36 common frames omitted
+2025-04-30 16:31:10,218 [eventLoopGroupProxy-4-1] ERROR InternalError - 
+org.jetbrains.exposed.exceptions.ExposedSQLException: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:61)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:183)
+	at org.jetbrains.exposed.sql.Transaction.exec(Transaction.kt:125)
+	at org.jetbrains.exposed.sql.statements.Statement.execute(Statement.kt:29)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert(Queries.kt:91)
+	at org.jetbrains.exposed.sql.QueriesKt.batchInsert$default(Queries.kt:61)
+	at org.jetbrains.exposed.dao.EntityCache.flushInserts$exposed(Entity.kt:454)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:407)
+	at org.jetbrains.exposed.dao.EntityCache.flush(Entity.kt:401)
+	at org.jetbrains.exposed.sql.Transaction.flushCache(Transaction.kt:85)
+	at org.jetbrains.exposed.sql.Transaction.commit(Transaction.kt:62)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:157)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+Caused by: java.sql.BatchUpdateException: Batch entry 0 INSERT INTO budget (amount, "authorId", "month", "type", "year") VALUES (122, 1, 5, 'Приход', 2020)
+RETURNING * was aborted: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:154)
+	at org.postgresql.core.ResultHandlerDelegate.handleError(ResultHandlerDelegate.java:50)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2269)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:511)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:851)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:874)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1569)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeBatch(ProxyStatement.java:128)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeBatch(HikariProxyPreparedStatement.java)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.execInsertFunction(InsertStatement.kt:110)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:119)
+	at org.jetbrains.exposed.sql.statements.InsertStatement.executeInternal(InsertStatement.kt:14)
+	at org.jetbrains.exposed.sql.statements.Statement.executeIn$exposed(Statement.kt:59)
+	... 26 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: column "authorId" of relation "budget" does not exist
+  Позиция: 29
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2533)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2268)
+	... 36 common frames omitted
+2025-04-30 16:31:10,220 [eventLoopGroupProxy-4-1] INFO  Application - 500 Internal Server Error: POST - /budget/add
+2025-04-30 16:31:58,962 [Thread-0] INFO  Application - Application stopping: io.ktor.application.Application@ac91282
+2025-04-30 16:31:58,964 [Thread-0] INFO  Application - Application stopped: io.ktor.application.Application@ac91282
+2025-04-30 16:32:05,127 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 16:32:05,744 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 16:32:05,965 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 16:32:05,997 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 16:32:06,031 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 16:32:06,036 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 16:32:06,115 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.040s)
+2025-04-30 16:32:06,135 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 3
+2025-04-30 16:32:06,136 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 16:32:06,138 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2025-04-30 16:32:06,362 [main] INFO  org.reflections.Reflections - Reflections took 172 ms to scan 1 urls, producing 96 keys and 1173 values 
+2025-04-30 16:32:08,016 [main] INFO  Application - Responding at http://0.0.0.0:8080
+2025-04-30 16:32:08,017 [main] INFO  Application - Application started in 2.931 seconds.
+2025-04-30 16:32:08,017 [main] INFO  Application - Application started: io.ktor.application.Application@ac91282
+2025-04-30 16:32:15,149 [eventLoopGroupProxy-4-1] INFO  Application - 200 OK: POST - /budget/add
+2025-04-30 16:32:27,846 [eventLoopGroupProxy-4-1] ERROR InternalError - 
+java.lang.NullPointerException: Cannot invoke "java.lang.Number.intValue()" because the return value of "mobi.sevenwinds.app.budget.BudgetEntity.getValue(org.jetbrains.exposed.sql.Column, org.jetbrains.exposed.dao.Entity, kotlin.reflect.KProperty)" is null
+	at mobi.sevenwinds.app.budget.BudgetEntity.getAuthorId(BudgetTable.kt)
+	at mobi.sevenwinds.app.budget.BudgetEntity.toResponse(BudgetTable.kt:27)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:23)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2$1.invoke(BudgetService.kt:10)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:156)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$2.invoke(ThreadLocalTransactionManager.kt:197)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:196)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:134)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:205)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:106)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:104)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:103)
+	at mobi.sevenwinds.app.budget.BudgetService$addRecord$2.invokeSuspend(BudgetService.kt:12)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+2025-04-30 16:32:27,847 [eventLoopGroupProxy-4-1] INFO  Application - 500 Internal Server Error: POST - /budget/add
+2025-04-30 16:33:15,138 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 16:33:15,673 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 16:33:15,844 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 16:33:15,873 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 16:33:15,906 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 16:33:15,912 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 16:33:15,996 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.045s)
+2025-04-30 16:33:16,021 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 3
+2025-04-30 16:33:16,021 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 16:33:16,024 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2025-04-30 16:33:16,262 [main] INFO  org.reflections.Reflections - Reflections took 176 ms to scan 1 urls, producing 96 keys and 1173 values 
+2025-04-30 16:33:17,930 [main] INFO  Application - Responding at http://0.0.0.0:8080
+2025-04-30 16:33:17,930 [main] INFO  Application - Application started in 2.819 seconds.
+2025-04-30 16:33:17,931 [main] INFO  Application - Application started: io.ktor.application.Application@ac91282
+2025-04-30 16:33:22,491 [eventLoopGroupProxy-4-1] INFO  Application - 200 OK: POST - /budget/add
+2025-04-30 16:39:51,292 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2025-04-30 16:39:51,813 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-30 16:39:51,988 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-30 16:39:52,022 [main] INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 5.2.4 by Boxfuse
+2025-04-30 16:39:52,052 [main] INFO  o.f.c.i.database.DatabaseFactory - Database: jdbc:postgresql://localhost:5432/12 (PostgreSQL 12.12)
+2025-04-30 16:39:52,056 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: PostgreSQL 12.12 is newer than this version of Flyway and support has not been tested.
+2025-04-30 16:39:52,122 [main] INFO  o.f.c.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.032s)
+2025-04-30 16:39:52,141 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 3
+2025-04-30 16:39:52,141 [main] WARN  o.f.core.internal.command.DbMigrate - outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+2025-04-30 16:39:52,143 [main] INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+2025-04-30 16:39:52,363 [main] INFO  org.reflections.Reflections - Reflections took 168 ms to scan 1 urls, producing 96 keys and 1173 values 
+2025-04-30 16:39:54,190 [main] INFO  Application - Responding at http://0.0.0.0:8080
+2025-04-30 16:39:54,190 [main] INFO  Application - Application started in 2.922 seconds.
+2025-04-30 16:39:54,191 [main] INFO  Application - Application started: io.ktor.application.Application@ac91282
+2025-04-30 16:40:04,489 [eventLoopGroupProxy-4-1] INFO  Application - 200 OK: POST - /budget/add
+2025-04-30 16:40:22,001 [eventLoopGroupProxy-4-1] INFO  Application - 200 OK: POST - /budget/add
+2025-04-30 16:40:53,324 [eventLoopGroupProxy-4-1] INFO  Application - 200 OK: POST - /budget/add
+2025-04-30 16:40:58,271 [eventLoopGroupProxy-4-1] INFO  Application - 200 OK: POST - /budget/add
