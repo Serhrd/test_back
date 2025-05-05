@@ -45,7 +45,7 @@ class BudgetApiKtTest : ServerTest() {
         addRecord(BudgetRecord(2020, 1, 5, BudgetType.Приход))
         addRecord(BudgetRecord(2020, 5, 50, BudgetType.Приход))
         addRecord(BudgetRecord(2020, 1, 30, BudgetType.Приход))
-        addRecord(BudgetRecord(2020, 5, 400, BudgetType.Приход))
+        addRecord(BudgetRecord(2020, 5, 400, BudgetType.Приход,1))
 
 
         // expected sort order - month ascending, amount descending

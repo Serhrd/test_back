@@ -2,9 +2,7 @@ package mobi.sevenwinds.app.budget
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import mobi.sevenwinds.app.budget.AuthorEntity.Companion.findById
-import org.jetbrains.exposed.sql.SortOrder
-import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object BudgetService {
@@ -15,9 +13,7 @@ object BudgetService {
                 this.month = body.month
                 this.amount = body.amount
                 this.type = body.type
-                if (body.authorId != null) {
-                    this.authorId = body.authorId
-                }
+                this.author = if (body.author != null) AuthorEntity[body.author] else null
             }
 
             return@transaction entity.toResponse()
@@ -26,28 +22,29 @@ object BudgetService {
 
     suspend fun getYearStats(param: BudgetYearParam): BudgetYearStatsResponse = withContext(Dispatchers.IO) {
         transaction {
-            val paginatedQuery = BudgetTable
-                .select { BudgetTable.year eq param.year }
-                .limit(param.limit, param.offset)
-                .orderBy(BudgetTable.month)
-                .orderBy(BudgetTable.amount,SortOrder.DESC)
+            var query = BudgetTable.select { BudgetTable.year eq param.year }
 
-            val data = BudgetEntity.wrapRows(paginatedQuery).map { it.toResponse() }
+            val total = query.count()
 
-            val total = BudgetTable
-                .select { BudgetTable.year eq param.year }
-                .count()
+            val sumByType = BudgetEntity.wrapRows(query)
+                .map { it.toResponse() }
+                .groupBy { it.type.name }
+                .mapValues { it.value.sumOf { v -> v.amount } }
 
-            val sumByType = BudgetTable
-                .select { BudgetTable.year eq param.year }
-                .groupBy { it[BudgetTable.type] }
+            if (param.authorName != null) {
+                val authorIds = AuthorTable
+                    .select { AuthorTable.fullName.lowerCase() like "%${param.authorName.toLowerCase()}%" }
+                    .map { it[AuthorTable.id] }
+                query = query.andWhere { BudgetTable.author inList authorIds }
+            }
 
-                .mapValues { (_, rows) ->
-                    rows.sumOf { it[BudgetTable.amount] }
-                }
-                .mapKeys { it.key.name }
+            val data = BudgetEntity.wrapRows(
+                query
+                    .limit(param.limit, param.offset)
+                    .orderBy(BudgetTable.month to SortOrder.ASC, BudgetTable.amount to SortOrder.DESC)
+            ).map { it.toResponseWithAuthor() }
 
-            BudgetYearStatsResponse(
+            return@transaction BudgetYearStatsResponse(
                 total = total,
                 totalByType = sumByType,
                 items = data

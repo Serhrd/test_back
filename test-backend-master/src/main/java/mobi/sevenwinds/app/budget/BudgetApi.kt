@@ -10,7 +10,6 @@ import com.papsign.ktor.openapigen.route.path.normal.get
 import com.papsign.ktor.openapigen.route.path.normal.post
 import com.papsign.ktor.openapigen.route.response.respond
 import com.papsign.ktor.openapigen.route.route
-import org.jetbrains.annotations.Nullable
 
 fun NormalOpenAPIRoute.budget() {
     route("/budget") {
@@ -36,19 +35,28 @@ data class BudgetRecord(
     @Min(1) @Max(12) val month: Int,
     @Min(1) val amount: Int,
     val type: BudgetType,
-    @Nullable val authorId: Int? =null
+    val author: Int? = null
+)
+data class BudgetRecordWithAuthor(
+    @Min(1900) val year: Int,
+    @Min(1) @Max(12) val month: Int,
+    @Min(1) val amount: Int,
+    val type: BudgetType,
+    val author: AuthorRecord? = null
 )
 
 data class BudgetYearParam(
     @PathParam("Год") val year: Int,
     @QueryParam("Лимит пагинации") val limit: Int,
     @QueryParam("Смещение пагинации") val offset: Int,
+    @QueryParam("Опциональный фильтр по ФИО автора") val authorName: String? = null
+
 )
 
 class BudgetYearStatsResponse(
     val total: Int,
     val totalByType: Map<String, Int>,
-    val items: List<BudgetRecord>
+    val items: List<BudgetRecordWithAuthor>
 )
 
 enum class BudgetType {
